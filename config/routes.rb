@@ -6,10 +6,14 @@ Rails.application.routes.draw do
   # rails will invoke the WelcomeController with 'index' action
   get "/home" => "welcome#index"
   get "/aboot" => "welcome#aboot"
-
+  get "/contact_us" => "contact_us#new"
   # for this route we will have helper methods: about_us_path and about_us_url
   # get "/aboot" => "welcome#aboot" as: :about_us
 
+  # this defines the 'root' or home page on our application to go to the
+  # welcomecontroller with 'index' action. we will have acces to the helper
+  # methods: root_path and root_url
+  root "welcome#index"
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
