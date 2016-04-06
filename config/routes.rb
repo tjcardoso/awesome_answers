@@ -2,6 +2,15 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  #This defines a route so that wwhen we receive a GET request with url: /home
+  # rails will invoke the WelcomeController with 'index' action
+  get "/home" => "welcome#index"
+  get "/aboot" => "welcome#aboot"
+
+  # for this route we will have helper methods: about_us_path and about_us_url
+  # get "/aboot" => "welcome#aboot" as: :about_us
+
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
