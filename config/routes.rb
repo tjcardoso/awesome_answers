@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "/home" => "welcome#index"
   get "/aboot" => "welcome#aboot"
   get "/contact_us" => "contact_us#new"
+  post "contact_us" => "contact_us#create"
+
   # for this route we will have helper methods: about_us_path and about_us_url
   # get "/aboot" => "welcome#aboot" as: :about_us
 

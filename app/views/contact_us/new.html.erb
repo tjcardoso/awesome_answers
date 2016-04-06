@@ -1,1 +1,27 @@
 <h1>Contact Us</h1>
+
+<%= form_tag contact_us_path do %>
+  <div >
+    <%= label_tag :full_name %>
+    <%= text_field_tag :full_name, nil, {placeholder: "John Smith"}%>
+    <!-- above generates -->
+    <!-- <div>
+      <label for="full_name">Full name</label>
+      <input type="text" name="full_name" id="full_name">
+    </div> -->
+  </div>
+  <br>
+  <div class="">
+    <%= label_tag :email %>
+    <%= email_field_tag :email,nil, {placeholder: "Johnsmith@domain.com"}%>
+  </div>
+  <br>
+  <div class="">
+    <%= label_tag :messages %>
+    <%= text_area_tag :messages, nil, {rows: 10, cols:100, placeholder: "Type your message here"}%>
+  </div>
+  <br>
+  <br>
+  <%= submit_tag "Contact Us!" %>
+
+<% end %>
