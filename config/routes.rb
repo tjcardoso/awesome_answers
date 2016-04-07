@@ -5,9 +5,23 @@ Rails.application.routes.draw do
   #This defines a route so that wwhen we receive a GET request with url: /home
   # rails will invoke the WelcomeController with 'index' action
   get "/home" => "welcome#index"
+
   get "/aboot" => "welcome#aboot"
+
+
   get "/contact_us" => "contact_us#new"
   post "contact_us" => "contact_us#create"
+
+  # assignment from day 18:
+  get "/questions/" => "questions#create"
+
+  delete "/questions/:id" => "questions#destroy"
+  get "/questions/:id/edit" => "questions#edit"
+  get "/questions/:id/" => "questions#show"
+
+  # post "/questions/:id/comments" => "comments#create"
+  # get "/faq" => "faq#new"
+
 
   # for this route we will have helper methods: about_us_path and about_us_url
   # get "/aboot" => "welcome#aboot" as: :about_us
