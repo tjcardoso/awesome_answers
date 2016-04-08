@@ -13,11 +13,14 @@ Rails.application.routes.draw do
   post "contact_us" => "contact_us#create"
 
   # assignment from day 18:
-  get "/questions/" => "questions#create"
+  get "/questions/new" => "questions#new", as: :new_question
+  post "/questions" => "questions#create", as: :questions
+  get "/questions/:id" => "questions#show", as: :question  #singular for show
+  
 
-  delete "/questions/:id" => "questions#destroy"
-  get "/questions/:id/edit" => "questions#edit"
-  get "/questions/:id/" => "questions#show"
+  # delete "/questions/:id" => "questions#destroy"
+  # get "/questions/:id/edit" => "questions#edit"
+  # get "/questions/:id/" => "questions#show"
 
   # post "/questions/:id/comments" => "comments#create"
   # get "/faq" => "faq#new"
