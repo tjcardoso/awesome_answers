@@ -11,6 +11,7 @@ class QuestionsController < ApplicationController
   def show
     # session[:id] = params[:id]
   end
+
   
 
 end

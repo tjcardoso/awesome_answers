@@ -8,7 +8,9 @@
 100.times do
   q = Question.create title:     Faker::Company.bs,
                       body:       Faker::Lorem.paragraph,
-                      view_count: 0
+                      view_count: 0,
+                      email: Faker::Internet.email
+
 end
 
 puts Cowsay.say("Generated 100 questions!")
