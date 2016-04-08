@@ -47,15 +47,25 @@ class QuestionsController < ApplicationController
     @question = Question.find params[:id]
   end
 
-  def destroy
-
+  def index
+    @questions = Question.all
   end
 
   def edit
-
+    @question = Question.find params[:id]
   end
 
+  def update
+    @question = Question.find params[:id]
+    question_params = params.require(:question).permit(:title, :body)
+    if @question.update question_params
+      redirect_to question_path(@question)
+    else
+      render :edit
+    end
+  end
 
+  
 
 
 end

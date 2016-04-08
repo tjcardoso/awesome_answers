@@ -1,0 +1,21 @@
+<h1>Edit Question</h1>
+
+<%#If you give the form_for helper an ActiveRecord object that is persisted then %>
+<%#the generated form will have an action that submits to 'question_path(@question)'%>
+<%# where @question is the ActiveRecord object htat you passed to the form %>
+
+<%=form_for @question do |f| %>
+
+  <div class="">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+<br>
+  <div class="text-area">
+
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+ <%= f.submit %>
+ <% end%>

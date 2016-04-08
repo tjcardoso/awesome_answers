@@ -13,10 +13,12 @@ Rails.application.routes.draw do
   post "contact_us" => "contact_us#create"
 
   # assignment from day 18:
-  get "/questions/new" => "questions#new", as: :new_question
-  post "/questions" => "questions#create", as: :questions
-  get "/questions/:id" => "questions#show", as: :question  #singular for show
-  
+  get "/questions/new"        => "questions#new",     as: :new_question
+  post "/questions"           => "questions#create",  as: :questions
+  get "/questions/:id"        => "questions#show",    as: :question  #singular for show
+  get '/questions'            => "questions#index"
+  get '/questions/:id/edit'   => "questions#edit",    as: :edit_question
+  patch "/question/:id"       => "questions#update"   #dont need anything because of questions#show
 
   # delete "/questions/:id" => "questions#destroy"
   # get "/questions/:id/edit" => "questions#edit"

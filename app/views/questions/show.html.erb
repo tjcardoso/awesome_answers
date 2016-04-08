@@ -1,7 +1,4 @@
 <h1><%=@question.title %></h1>
-
 <p><%= @question.body %></p>
-
-<p>
-  View count: <%= @question.view_count%>
-</p>
+<p>View count: <%= @question.view_count%></p>
+<%= link_to "Edit", edit_question_path(@question)%>
