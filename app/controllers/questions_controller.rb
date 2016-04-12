@@ -1,5 +1,18 @@
 class QuestionsController < ApplicationController
 
+  # Defining a method as a 'before_action' will make is so that rails executse
+  # that method before executing the action. This is still within the request
+  # cycle
+  # You can give the "before_action" method two options:  :only or :exception
+  # This will help you limit the action which the "find_question" method will
+  # be executed before
+  # in the code below 'find_question' will only be executed before: show, edit
+  # update and destroy actions
+
+  before_action(:find_question, {only: [:show, :edit, :update, :destroy]})
+
+
+
   def new
     # we need to define a new 'Question' object in order to be able to
     # properly generate form in Rails
@@ -25,14 +38,15 @@ class QuestionsController < ApplicationController
 
     # Method 4  (main type)
     # we use strong parameters feature of Rails
-    question_params = params.require(:question).permit([:title, :body])
     @question = Question.new(question_params)
 
     if @question.save
+      flash[:notice] = "Question Created!"
       # redirect_to question_path({id: @question.id})
       redirect_to question_path(@question)
 
     else
+      flash[:alert] = "Question didn't save"
       # this will render '/app/views/questions/new.html.erb' becasue the default
       # in this action is to render 'app/views/questions/create.html.erb'
       render :new
@@ -44,28 +58,43 @@ class QuestionsController < ApplicationController
   # we receive a request: GET /questions/56
   # params[:id] will be '56'
   def show
-    @question = Question.find params[:id]
   end
 
   def index
-    @questions = Question.all
+    # @questions = Question.all
+    @questions = Question.page(params[:page]).per(10)
   end
 
   def edit
-    @question = Question.find params[:id]
   end
 
   def update
-    @question = Question.find params[:id]
-    question_params = params.require(:question).permit(:title, :body)
+
     if @question.update question_params
-      redirect_to question_path(@question)
+      # flash messages can be set either direclty use: flash[:notice] = ".."
+      # you can also pass ':notice' or ':alert 'options to the 'redirect_to'
+      # method
+      redirect_to question_path(@question), notice: "Question #{@question.title} updated!"
     else
       render :edit
     end
   end
 
-  
+  def destroy
+    @question.destroy
+    redirect_to questions_path
+
+  end
+
+  private
+
+  def find_question
+    @question = Question.find params[:id]
+  end
+
+  def question_params
+    params.require(:question).permit([:title, :body])
+  end
 
 
 end

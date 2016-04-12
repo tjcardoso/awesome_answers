@@ -31,12 +31,12 @@ class Question < ActiveRecord::Base
     order("created_at DESC").limit(3)
   end
 
-  # Question.search("hello")
 
   def self.search_term(words)
     where(["title ILIKE ? OR body ILIKE ? OR email ILIKE ?", "%#{words}%", "%#{words}%", "%#{words}%"])
   end
 
+  # Question.search("hello")
 
   def self.search(words)
     # where("title ILIKE '%#{words}%' OR body ILIKE '%#{words}%')

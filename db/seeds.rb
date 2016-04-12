@@ -6,10 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 100.times do
-  q = Question.create title:     Faker::Company.bs,
+  q = Question.create title:     Faker::Commerce.product_name,
                       body:       Faker::Lorem.paragraph,
-                      view_count: 0,
-                      email: Faker::Internet.email
+                      email:      Faker::Internet.email,
+                      view_count: 0
 
 end
 

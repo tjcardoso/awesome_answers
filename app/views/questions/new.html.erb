@@ -1,7 +1,8 @@
 <h1>New Question</h1>
 
+<%= render 'form'%>
 
-<%= @question.errors.full_messages.join(", ") %>
+
 
 <%# form_for is a Rails helper method that accepts an ActiveRecord object as
 the first argument.
@@ -10,21 +11,7 @@ of the form go to 'questions_path' (Rails convention) and it will make the 'meth
 of the 'form' be POST
 %>
 
-<%= form_for @question do |f| %>
 
-  <div class="">
     <!-- by using f.text_field :title, if @quesion has a value for the attribute
     'title', it will populate the field with that value. This is usually there
     case when redisplaying the form after an error occurs -->
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-<br>
-  <div class="text-area">
-
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-
- <%= f.submit %>
- <% end%>

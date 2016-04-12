@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+
+  get 'welcome/hello'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -12,13 +16,18 @@ Rails.application.routes.draw do
   get "/contact_us" => "contact_us#new"
   post "contact_us" => "contact_us#create"
 
+
+  resources :questions
+  #generates all the below
+
   # assignment from day 18:
-  get "/questions/new"        => "questions#new",     as: :new_question
-  post "/questions"           => "questions#create",  as: :questions
-  get "/questions/:id"        => "questions#show",    as: :question  #singular for show
-  get '/questions'            => "questions#index"
-  get '/questions/:id/edit'   => "questions#edit",    as: :edit_question
-  patch "/question/:id"       => "questions#update"   #dont need anything because of questions#show
+  # get "/questions/new"        => "questions#new",     as: :new_question
+  # post "/questions"           => "questions#create",  as: :questions
+  # get "/questions/:id"        => "questions#show",    as: :question  #singular for show
+  # get '/questions'            => "questions#index"
+  # get '/questions/:id/edit'   => "questions#edit",    as: :edit_question
+  # patch "/questions/:id"      => "questions#update"   #dont need anything because of questions#show
+  # delete 'questions/:id'      => "questions#destroy"
 
   # delete "/questions/:id" => "questions#destroy"
   # get "/questions/:id/edit" => "questions#edit"
