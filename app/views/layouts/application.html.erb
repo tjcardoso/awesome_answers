@@ -22,7 +22,13 @@
   |
   <%= link_to "Question List", questions_path %>
   |
-
+  <% if user_signed_in? %>
+    Hello, <%= current_user.first_name.capitalize %>
+    <%= link_to "Log Out", sessions_path, method: :delete %>
+  <%  else %>
+    <%= link_to "Sign In", new_session_path %>
+    <%= link_to "Sign Up", new_user_path %>
+  <% end %>
   <hr>
   <%# flash[:notice] || flash[:alert] %>
   <%= notice || alert %>

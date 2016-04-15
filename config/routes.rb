@@ -16,8 +16,20 @@ Rails.application.routes.draw do
   get "/contact_us" => "contact_us#new"
   post "contact_us" => "contact_us#create"
 
+  resources :users, only: [:new, :create]
 
-  resources :questions
+  resources :sessions, only: [:new, :create] do
+    delete :destroy, on: :collection   #we use this because it doesn't require an id
+    # delete :destroy, on: :member
+    # delete :destroy
+  end
+
+  resources :questions do
+    # the answers routes will be the standard ones prefixed with /questions/:question_id
+    # this way, when we want to create an answer, we know the question that it references
+    # all the helpers will be the same as before, prefixed with 'question_'
+    resources :answers
+  end
   #generates all the below
 
   # assignment from day 18:

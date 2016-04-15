@@ -10,7 +10,19 @@
                       body:       Faker::Lorem.paragraph,
                       email:      Faker::Internet.email,
                       view_count: 0
+  10.times do
+    random = rand(20)
+    if random < 10
+      q.answers.create(body: Faker::StarWars.quote)
+    else
+      q.answers.create(body: Faker::ChuckNorris.fact)
+    end
+  end
 
+end
+
+10.times do
+  Category.create(name: Faker::Hacker.adjective)
 end
 
 puts Cowsay.say("Generated 100 questions!")

@@ -1,7 +1,24 @@
 <h1><%=@question.title %></h1>
 <p><%= @question.body %></p>
+<p>Category: <%= @question.category.name.capitalize %></p>
 <p>View count: <%= @question.view_count%></p>
 <%= link_to "Edit", edit_question_path(@question)%>
 <%= link_to "Delete", question_path(@question),
                       method: :delete,
                       data: {confirm: 'Are you sure?'} %>
+<hr>
+
+<%=@answer.errors.full_messages.join(", ")%>
+<%#= form_for @answer, url: question_answers_path(@question) do |f| %>
+<%= form_for [@question, @answer] do |f| %>
+  <%= f.text_area :body %>
+  <%= f.submit %>
+<% end %>
+
+<h2><% @question.answers.each do |a|%></h2>
+  Answer #: <%= a.body %>
+  <%= link_to "delete", question_answer_path(@question, a),
+                        data: {confirm: "Are you sure?"},
+                        method: :delete %>
+  <hr>
+  <% end %>

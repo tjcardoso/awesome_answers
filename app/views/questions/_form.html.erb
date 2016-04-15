@@ -19,5 +19,12 @@ variables available in the templates (eg @questions) -->
     <%= f.text_area :body %>
   </div>
 
+  <div class="">
+    <%= f.label :category%>
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
+    
+  </div>
+
+
  <%= f.submit %>
  <% end%>
