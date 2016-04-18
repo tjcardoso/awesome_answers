@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/stympy/faker.git
-  revision: 983f6cd78840a77240e854020d43133e6f19af70
+  revision: 7273fe5c29c2a6c80536ace0b56546f28e262bec
   specs:
     faker (1.6.3)
       i18n (~> 0.5)
@@ -44,13 +44,22 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
+    autoprefixer-rails (6.3.6)
+      execjs
     awesome_print (1.6.1)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.6)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
+    bootswatch-rails (3.3.5)
+      railties (>= 3.1)
     builder (3.2.2)
-    byebug (8.2.2)
+    byebug (8.2.4)
+    cancancan (1.13.1)
     choice (0.2.0)
+    coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -61,8 +70,14 @@ GEM
     concurrent-ruby (1.0.1)
     cowsay (0.2.0)
     debug_inspector (0.0.2)
+    diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
+    factory_girl (4.7.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.7.0)
+      factory_girl (~> 4.7.0)
+      railties (>= 3.0.0)
     ffi (1.9.10)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -85,6 +100,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    method_source (0.8.2)
     mime-types (3.0)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0221)
@@ -93,7 +109,13 @@ GEM
     multi_json (1.11.2)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    nyan-cat-formatter (0.11)
+      rspec (>= 2.99, >= 2.14.2, < 4)
     pg (0.18.4)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -129,6 +151,27 @@ GEM
     rake (11.1.2)
     rdoc (4.2.2)
       json (~> 1.4)
+    rspec (3.4.0)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+    rspec-core (3.4.4)
+      rspec-support (~> 3.4.0)
+    rspec-expectations (3.4.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-mocks (3.4.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-rails (3.4.2)
+      actionpack (>= 3.0, < 4.3)
+      activesupport (>= 3.0, < 4.3)
+      railties (>= 3.0, < 4.3)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+      rspec-support (~> 3.4.0)
+    rspec-support (3.4.1)
     ruby-graphviz (1.2.2)
     sass (3.4.22)
     sass-rails (5.0.4)
@@ -140,10 +183,11 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    slop (3.6.0)
     spoon (0.0.4)
       ffi
-    spring (1.6.4)
-    sprockets (3.5.2)
+    spring (1.7.1)
+    sprockets (3.6.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.0.4)
@@ -171,18 +215,25 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   bcrypt (~> 3.1.7)
+  bootstrap-sass
+  bootswatch-rails
   byebug
+  cancancan
   coffee-rails (~> 4.1.0)
   cowsay
+  factory_girl_rails
   faker!
   hirb
   interactive_editor
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  nyan-cat-formatter
   pg (~> 0.15)
+  pry
   rails (= 4.2.6)
   rails-erd
+  rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

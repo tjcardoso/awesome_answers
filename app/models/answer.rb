@@ -5,8 +5,14 @@ class Answer < ActiveRecord::Base
   # q = ans.question
   # belongs_to assume that the 'asnwers' table has a foregin_key
   # called question_id which is Rails Convention
-
+  belongs_to :user
   belongs_to :question
 
   validates :body, presence: true
+
+  def user_full_name
+    user ? user.full_name : ""
+  end
+  
+
 end
