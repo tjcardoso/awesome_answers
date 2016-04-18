@@ -59,3 +59,6 @@ _________________________________________
 (tam does a bunch of rails stuff - just fork his github)
 
 bin/rails g controller sessions
+
+bin/rails g migration add_user_references_to_question user:references
+bin/rails g migration add_user_references_to_answers user:references

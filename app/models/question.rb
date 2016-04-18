@@ -6,6 +6,7 @@ class Question < ActiveRecord::Base
   # :nullify     which makes question_id NULL for all associated answers
   has_many :answers, dependent: :destroy
   belongs_to :category
+  belongs_to :user
 
   validates(:title, {presence: true, uniqueness: {message: "must be unique!"}})
   # validates(:title, {presence: true, uniqueness: true})    #can also do
@@ -50,6 +51,10 @@ class Question < ActiveRecord::Base
     # where("title ILIKE '%#{words}%' OR body ILIKE '%#{words}%')
     where(["title ILIKE ? OR body ILIKE ?", "%#{words}%", "%#{words}%"])
     # where(["title ILIKE :term OR body ILIKE :term", {term:  "%#{words}%"}])
+  end
+
+  def user_full_name
+    user ? user.full_name : ""
   end
 
 

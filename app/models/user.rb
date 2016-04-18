@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  # has-secure_password does the following:
+  # has_secure_password does the following:
   # 1 - it adds attribute accessors: password and password_confirmation
   # 2 - it adds validation: password must be present on creation
   # 3 - if password confirmation is present, it will make sure its equal to password
@@ -9,11 +9,19 @@ class User < ActiveRecord::Base
   #      password digets field
   has_secure_password
 
-  # attr_accessor :abc
+  has_many :questions, dependent: :nullify
+  has_many :answers, dependent: :nullify
+
 
   validates :first_name, presence: true
   validates :last_name, presence: true
 
   VALID_EMAIL_REGEX = /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email, uniqueness: true, presence: true, format: VALID_EMAIL_REGEX
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+
 end

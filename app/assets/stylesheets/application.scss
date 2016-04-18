@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap-sprockets";
+
+ // Import cerulean variables
+ @import "bootswatch/cyborg/variables";
+
+ // Then bootstrap itself
+ @import "bootstrap";
+
+ // Bootstrap body padding for fixed navbar
+ // body { padding-top: 20px; }
+ // td { font-size: 1.3em;}
+ // th { font-size: 1.3em;}
+ // .container-fluid {text-align: center; font-size: 1.2em;}
+
+ // And finally bootswatch style itself
+ @import "bootswatch/cyborg/bootswatch";
