@@ -31,6 +31,7 @@ gem 'faker', github: "stympy/faker"
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 gem 'rails-erd'
+gem 'rails_12factor', group: :production
 # Use Unicorn as the app server
 # gem 'unicorn'
 

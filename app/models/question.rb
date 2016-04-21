@@ -7,7 +7,7 @@ class Question < ActiveRecord::Base
   has_many :answers, dependent: :destroy
   belongs_to :category
   belongs_to :user
-
+  has_many :likes, dependent: :destroy
   validates(:title, {presence: true, uniqueness: {message: "must be unique!"}})
   # validates(:title, {presence: true, uniqueness: true})    #can also do
   # validates :title, presence: true, uniqueness: {message: "must be unique!"}   #can also do
@@ -55,6 +55,10 @@ class Question < ActiveRecord::Base
 
   def user_full_name
     user ? user.full_name : ""
+  end
+
+  def like_for(user)
+    likes.find_by_user_id user if user
   end
 
 

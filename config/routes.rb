@@ -28,7 +28,10 @@ Rails.application.routes.draw do
     # the answers routes will be the standard ones prefixed with /questions/:question_id
     # this way, when we want to create an answer, we know the question that it references
     # all the helpers will be the same as before, prefixed with 'question_'
-    resources :answers
+    resources :answers, only: [:create, :destroy]
+
+    resources :likes, only: [:create, :destroy]
+
   end
   #generates all the below
 

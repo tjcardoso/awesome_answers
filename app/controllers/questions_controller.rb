@@ -99,6 +99,11 @@ class QuestionsController < ApplicationController
 
   private
 
+  def user_like
+    @user_like ||= @question.like_for(current_user)
+  end
+  helper_method :user_like
+  
   def authorize_question
     redirect_to root_path unless can? :manage, @question
   end
