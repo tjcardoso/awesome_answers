@@ -41,9 +41,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'pry'
-gem 'rspec-rails'
-gem 'factory_girl_rails'
-gem 'nyan-cat-formatter'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'nyan-cat-formatter'
 end
 
 group :development do

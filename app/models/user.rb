@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   # 4 - PAssword length should be less than or equal to 72 chars
   # 5 - it will has the password using bcrypt and stores the has digest in the
   #      password digets field
+  # 6 - Adds an authenticate method
+  
+
+
   has_secure_password
 
   has_many :questions, dependent: :nullify
