@@ -4,10 +4,14 @@ class Question < ActiveRecord::Base
   # you also should provide the :dependent option which can be ehter:
   # :destroy    which deletes all the answers when question is deleted
   # :nullify     which makes question_id NULL for all associated answers
-  has_many :answers, dependent: :destroy
   belongs_to :category
   belongs_to :user
+  has_many :answers, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :votes, dependent: :destroy
+  has_many :voting_users, through: :votes, source: :user
+  has_many :liking_users, through: :likes, source: :user
+
   validates(:title, {presence: true, uniqueness: {message: "must be unique!"}})
   # validates(:title, {presence: true, uniqueness: true})    #can also do
   # validates :title, presence: true, uniqueness: {message: "must be unique!"}   #can also do
@@ -61,6 +65,13 @@ class Question < ActiveRecord::Base
     likes.find_by_user_id user if user
   end
 
+  def vote_for(user)
+    votes.find_by_user_id user if user
+  end
+
+  def vote_value
+    votes.up_count - votes.down_count
+  end
 
   private
 

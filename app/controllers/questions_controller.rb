@@ -17,6 +17,10 @@ class QuestionsController < ApplicationController
   before_action :find_question, only: [:edit, :update, :destroy, :show]
   before_action :authorize_question, only: [:edit, :update, :destroy]
 
+  skip_before_action :authorize_question
+
+  include QuestionsAnswersHelper
+  helper_method :user_like
 
   def new
     # we need to define a new 'Question' object in order to be able to
@@ -99,11 +103,12 @@ class QuestionsController < ApplicationController
 
   private
 
-  def user_like
-    @user_like ||= @question.like_for(current_user)
-  end
-  helper_method :user_like
-  
+
+  # def user_like
+  #   @user_like ||= @question.like_for(current_user)
+  # end
+  # helper_method :user_like
+
   def authorize_question
     redirect_to root_path unless can? :manage, @question
   end
