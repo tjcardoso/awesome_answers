@@ -14,6 +14,7 @@ class AnswersController < ApplicationController
     @answer.user = current_user
     if @answer.save
       # render json: params
+      AnswersMailer.notify_question_owner(@answer).deliver_now
       redirect_to question_path(@question), notice: "Thanks for answering!"
     else
       flash[:alert] = "not saved"

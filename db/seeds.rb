@@ -5,6 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
 100.times do
   q = Question.create title:     Faker::Commerce.product_name,
                       body:       Faker::Lorem.paragraph,
@@ -23,6 +25,10 @@ end
 
 10.times do
   Category.create(name: Faker::Hacker.adjective)
+end
+
+30.times do
+  Tag.create(name: Faker::Hipster.word)
 end
 
 puts Cowsay.say("Generated 100 questions!")

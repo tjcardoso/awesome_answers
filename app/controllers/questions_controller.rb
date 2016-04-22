@@ -110,7 +110,7 @@ class QuestionsController < ApplicationController
   # helper_method :user_like
 
   def authorize_question
-    redirect_to root_path unless can? :manage, @question
+    redirect_to root_path unless can? :crud, @question
   end
 
   def find_question
@@ -118,7 +118,8 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit([:title, :body, :category_id])
+    params.require(:question).permit([:title, :body,
+                                      :category_id, {tag_ids: [] }])
   end
 
 

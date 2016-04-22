@@ -1,0 +1,14 @@
+Hello <%= @owner.first_name %>,
+
+You got an answer to your question:
+
+
+Question:  <%= @question.title %>
+
+<%= link_to "Click here to view the question", question_url(@question%>)
+
+
+Answer: <%=@answer.body %>
+
+
+Have a safe day!

@@ -14,7 +14,6 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem "cowsay"
 
-gem 'faker', github: "stympy/faker"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -31,6 +30,7 @@ gem 'faker', github: "stympy/faker"
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 gem 'rails-erd'
+gem 'delayed_job_active_record'
 gem 'rails_12factor', group: :production
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -53,6 +53,7 @@ group :development do
   gem 'interactive_editor'
   gem 'awesome_print'
   gem 'hirb'
+  gem 'letter_opener'
   gem 'rails-erd'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

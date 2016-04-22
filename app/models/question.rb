@@ -7,10 +7,15 @@ class Question < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
   has_many :answers, dependent: :destroy
-  has_many :likes, dependent: :destroy
-  has_many :votes, dependent: :destroy
-  has_many :voting_users, through: :votes, source: :user
+
   has_many :liking_users, through: :likes, source: :user
+  has_many :likes, dependent: :destroy
+
+  has_many :voting_users, through: :votes, source: :user
+  has_many :votes, dependent: :destroy
+
+  has_many :taggings, dependent: :destroy
+  has_many :tags, through: :taggings
 
   validates(:title, {presence: true, uniqueness: {message: "must be unique!"}})
   # validates(:title, {presence: true, uniqueness: true})    #can also do
