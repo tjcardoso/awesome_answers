@@ -8,27 +8,34 @@ class AnswersController < ApplicationController
 
 
   def create
+    # sleep 5
     answer_params = params.require(:answer).permit(:body)
     @answer = Answer.new answer_params
     @answer.question = @question
     @answer.user = current_user
-    if @answer.save
-      # render json: params
-      AnswersMailer.notify_question_owner(@answer).deliver_now
-      redirect_to question_path(@question), notice: "Thanks for answering!"
-    else
-      flash[:alert] = "not saved"
-      # this will render the show.html.erb inside /views/questions
-      render "/questions/show"
+    respond_to do |format|  # add for ajax
+      if @answer.save
+        # render json: params
+        AnswersMailer.notify_question_owner(@answer).deliver_later
+        # add "format.html { normal rails stuff}"
+        format.html {redirect_to question_path(@question), notice: "Thanks for answering!"}
+        format.js{render :create_success}
+      else
+        flash[:alert] = "not saved"
+        # this will render the show.html.erb inside /views/questions
+        format.html{render "/questions/show"}
+        format.js{render js: "alert('failure');"}
+      end
     end
-
   end
 
   def destroy
-    answer = @question.answers.find params[:id]
-    answer.destroy
-    redirect_to question_path(@question), notice: "Answer Deleted!"
-  end
+     @answer.destroy
+     respond_to do |format|
+       format.html { redirect_to question_path(@question), notice: "Answer deleted!" }
+       format.js { render }
+     end
+   end
 
   private
 

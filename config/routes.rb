@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
   get 'welcome/index'
 
   get 'welcome/hello'

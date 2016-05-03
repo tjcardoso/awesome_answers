@@ -1,0 +1,9 @@
+<%=answer.errors.full_messages.join(", ")%>
+<%#= form_for answer, url: question_answers_path(@question) do |f| %>
+
+<!-- adding "remote: true" makes the form submit with ajax and prevents the default submit action  -->
+<%= form_for [@question, answer], remote: true do |f| %>
+  <%= f.text_area :body %><br>
+
+  <%= f.submit data: {disable_with: "submitting..."}%>
+<% end %>

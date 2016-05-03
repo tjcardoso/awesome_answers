@@ -40,21 +40,15 @@ both of them -->
 (<%=@question.vote_value %> )
 <hr>
 
-<%=@answer.errors.full_messages.join(", ")%>
-<%#= form_for @answer, url: question_answers_path(@question) do |f| %>
-<%= form_for [@question, @answer] do |f| %>
-  <%= f.text_area :body %><br>
-  <%= f.submit %>
-<% end %>
+<div id="answer-form">
+  <%= render "/answers/form", answer: @answer %>
 
-<h2><% @question.answers.each do |a|%></h2>
-  <p>Answer: <%= a.body %></p>
-  <p>by: <%= a.user_full_name.titleize %></p>
-  <%# if can? :destroy, a %>
+</div>
 
-  <%= link_to "delete", question_answer_path(@question, a),
-                        data: {confirm: "Are you sure?"},
-                        method: :delete %>
-   <%# end%>
-  <hr>
+
+<h2>Answers</h2>
+<div id="answers">
+  <% @question.answers.each do |ans|%>
+    <%= render "/answers/answer", answer: ans %>
   <% end %>
+</div>

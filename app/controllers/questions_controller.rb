@@ -57,7 +57,7 @@ class QuestionsController < ApplicationController
       flash[:notice] = "Question Created!"
       # redirect_to question_path({id: @question.id})
       redirect_to question_path(@question)
-
+      
     else
       flash[:alert] = "Question didn't save"
       # this will render '/app/views/questions/new.html.erb' becasue the default
@@ -72,6 +72,11 @@ class QuestionsController < ApplicationController
   # params[:id] will be '56'
   def show
     @answer = Answer.new
+    respond_to do |format|
+      format.html {render} # render questions/show.html.erb
+      format.json {render json: @question.to_json}
+      format.xml {render xml: @question.to_xml}
+    end
   end
 
   def index
