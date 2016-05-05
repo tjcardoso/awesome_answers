@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     # this way, when we want to create an answer, we know the question that it references
     # all the helpers will be the same as before, prefixed with 'question_'
     resources :votes, only: [:create, :update, :destroy]
-    resources :answers, only: [:create, :destroy]
+    resources :answers, only: [:create, :destroy, :edit, :update]
 
     resources :likes, only: [:create, :destroy]
 
