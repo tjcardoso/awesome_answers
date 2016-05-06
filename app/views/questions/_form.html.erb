@@ -4,31 +4,14 @@ You must start the partial with '_'. Partials have access to the same instance
 variables available in the templates (eg @questions) -->
 
 
-<%= @question.errors.full_messages.join(", ")%>
+<%#= @question.errors.full_messages.join(", ")%>
 
-<%=form_for @question do |f| %>
+<%= simple_form_for @question do |f| %>
+  <%= f.input :title, input_html: {class: "abc"}, label_html: {class: "hey"} %>
+  <%= f.input :body %>
+  <%= f.association :category %>
+  <%= f.association :tags, input_html: {class: "chosen-select"} %>
 
-  <div class="">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-<br>
-  <div class="text-area">
 
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-
-  <div class="">
-    <%= f.label :category%>
-    <%= f.collection_select :category_id, Category.order(:name), :id, :name %>
-
-  </div>
-
-  <div class="">
-    <%= f.label :tag_ids %>
-    <%= f.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name %>
-  </div>
-
- <%= f.submit %>
- <% end%>
+ <%= f.submit class: "btn btn-default" %>
+<% end%>

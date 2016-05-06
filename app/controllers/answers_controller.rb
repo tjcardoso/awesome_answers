@@ -24,7 +24,7 @@ class AnswersController < ApplicationController
         flash[:alert] = "not saved"
         # this will render the show.html.erb inside /views/questions
         format.html{render "/questions/show"}
-        format.js{render js: "alert('failure');"}
+        format.js{render :create_failure}
       end
     end
   end

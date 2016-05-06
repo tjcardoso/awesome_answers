@@ -10,7 +10,8 @@ object. It uses the object type and its id to generate a unique id -->
 <%= link_to "delete", question_answer_path(@question, answer),
                       data: {confirm: "Are you sure?"},
                       method: :delete,
-                      remote: true %>
+                      remote: true,
+                      class: "btn btn-primary btn-sm"  %>
  <%# end%>
 
  <% if can? :edit, answer %>

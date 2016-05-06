@@ -2,8 +2,8 @@
 <%#= form_for answer, url: question_answers_path(@question) do |f| %>
 
 <!-- adding "remote: true" makes the form submit with ajax and prevents the default submit action  -->
-<%= form_for [@question, answer], remote: true do |f| %>
-  <%= f.text_area :body %><br>
+<%= simple_form_for [@question, answer], remote: true do |f| %>
+  <%= f.input :body, label: false %><br>
 
-  <%= f.submit data: {disable_with: "submitting..."}%>
+  <%= f.submit data: {disable_with: "submitting..."}, class: "btn btn default"%>
 <% end %>
