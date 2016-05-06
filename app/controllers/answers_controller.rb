@@ -47,7 +47,7 @@ class AnswersController < ApplicationController
   private
 
   def find_question
-    @question = Question.find params[:question_id]
+    @question = Question.friendly.find params[:question_id]
   end
 
   def find_and_authorize_answer

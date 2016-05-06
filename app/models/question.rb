@@ -25,6 +25,9 @@ class Question < ActiveRecord::Base
 
   validates :view_count, numericality: {greater_than_or_equal_to: 0}
 
+  extend FriendlyId
+  friendly_id :title, use: :history
+
   # how to implement REGEX statememts:
   # VALID_EMAIL_REGEX = /\A([\w+\]
   # validates: :email, format: VALID_EMAIL_REGEX
@@ -77,6 +80,10 @@ class Question < ActiveRecord::Base
   def vote_value
     votes.up_count - votes.down_count
   end
+
+  # def to_param   # turns the urls into the title
+  #   "#{id}-#{title}".parameterize
+  # end
 
   private
 

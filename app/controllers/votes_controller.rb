@@ -35,7 +35,7 @@ class VotesController < ApplicationController
     @vote ||= current_user.votes.find params[:id]
   end
   def question
-    @question ||= Question.find params[:question_id]
+    @question ||= Question.friendly.find params[:question_id]
   end
 
 end

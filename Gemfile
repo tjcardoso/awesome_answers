@@ -34,6 +34,7 @@ gem 'delayed_job_web'
 gem 'simple_form'
 gem 'chosen-rails'
 gem 'jquery-turbolinks'
+gem 'friendly_id'
 gem 'rails_12factor', group: :production
 # Use Unicorn as the app server
 # gem 'unicorn'
